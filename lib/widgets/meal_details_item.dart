@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 // import 'package:meals/widgets/meal_item.dart';
 
 class MealDetailsItem extends StatelessWidget {
   const MealDetailsItem({
     super.key,
+    required this.meal,
   });
 
   // String get complexityText {
@@ -19,19 +19,23 @@ class MealDetailsItem extends StatelessWidget {
   //       meal.affordability.name.substring(1);
   // }
 
+  final Meal meal;
+
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Text(
-          'Meal details',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        )
+        FadeInImage(
+          placeholder: MemoryImage(kTransparentImage),
+          image: NetworkImage(meal.imageUrl),
+          fit: BoxFit.cover,
+          height: 200,
+          width: double.infinity,
+        ),
       ],
     );
   }
+}
 
   //       FadeInImage(
   //         placeholder: MemoryImage(kTransparentImage),
@@ -91,4 +95,4 @@ class MealDetailsItem extends StatelessWidget {
   //     ],
   //   );
   // }
-}
+// }

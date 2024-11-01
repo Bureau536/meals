@@ -6,11 +6,12 @@ class MealDetails extends StatelessWidget {
   const MealDetails({
     super.key,
     required this.title,
-    required this.meals,
+    required this.meal,
+    required List<Meal> meals,
   });
 
   final String title;
-  final List<Meal> meals;
+  final Meal meal;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,10 @@ class MealDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: const Expanded(
-        child: MealDetailsItem(),
+      body: Expanded(
+        child: MealDetailsItem(
+          meal: meal,
+        ),
       ),
     );
   }

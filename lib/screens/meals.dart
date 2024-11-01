@@ -17,6 +17,7 @@ class MealsScreen extends StatelessWidget {
         builder: (ctx) => MealDetails(
           title: meal.title,
           meals: filteredMeals,
+          meal: meal,
         ),
       ),
     );
