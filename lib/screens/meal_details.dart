@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/widgets/meal_details_item.dart';
+import 'package:meals/widgets/meal_ingredients.dart';
+import 'package:meals/widgets/meal_steps.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MealDetails extends StatelessWidget {
   const MealDetails({
@@ -19,10 +21,31 @@ class MealDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Expanded(
-        child: MealDetailsItem(
-          meal: meal,
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: 10,
+            ),
+            child: FadeInImage(
+              placeholder: MemoryImage(kTransparentImage),
+              image: NetworkImage(meal.imageUrl),
+              fit: BoxFit.cover,
+              height: 200,
+              width: double.infinity,
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  MealIngredients(ingredients: meal.ingredients),
+                  MealSteps(steps: meal.steps),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
