@@ -37,6 +37,7 @@ class MealDetails extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   MealIngredients(ingredients: meal.ingredients),
